@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khushu DBMS Practical Helper</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#0f172a;
+    color:white;
+    margin:0;
+    padding:20px;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+}
+
+h1{
+    text-align:center;
+    color:#38bdf8;
+}
+
+.card{
+    background:#1e293b;
+    padding:20px;
+    margin-bottom:20px;
+    border-radius:15px;
+}
+
+h2{
+    color:#22c55e;
+}
+
+pre{
+    background:#020617;
+    padding:15px;
+    border-radius:10px;
+    overflow:auto;
+    color:#e2e8f0;
+    white-space:pre-wrap;
+}
+
+button{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:8px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    border:none;
+    margin-bottom:20px;
+    font-size:18px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Khushu DBMS Practical Helper</h1>
+
+<input type="text" id="searchBox" placeholder="Search Practical..." onkeyup="searchCards()">
+
+<div class="card">
+<h2>Student Course Management</h2>
+<pre id="c1">
+CREATE DATABASE StudentDB;
+USE StudentDB;
+
+CREATE TABLE Student(
+StudentID INT PRIMARY KEY,
+Name VARCHAR(50),
+Email VARCHAR(50),
+Age INT,
+Address VARCHAR(50));
+
+CREATE TABLE Course(
+CourseID INT PRIMARY KEY,
+CourseName VARCHAR(50),
+Credits INT);
+
+SELECT * FROM Student WHERE Address='Pune';
+SELECT COUNT(*) FROM Student;
+SELECT AVG(Age) FROM Student;
+</pre>
+<button onclick="copyCode('c1')">Copy Code</button>
+</div>
+
+<div class="card">
+<h2>Employee Management</h2>
+<pre id="c2">
+CREATE DATABASE EmployeeDB;
+USE EmployeeDB;
+
+CREATE TABLE Employee(
+EmployeeID INT PRIMARY KEY,
+EmployeeName VARCHAR(50),
+Salary INT,
+DepartmentID INT);
+
+SELECT * FROM Employee ORDER BY Salary DESC;
+SELECT AVG(Salary) FROM Employee;
+SELECT COUNT(*) FROM Employee;
+</pre>
+<button onclick="copyCode('c2')">Copy Code</button>
+</div>
+
+<div class="card">
+<h2>Hostel Management</h2>
+<pre id="c3">
+CREATE DATABASE HostelDB;
+USE HostelDB;
+
+CREATE TABLE Student(
+StudentID INT PRIMARY KEY,
+StudentName VARCHAR(50),
+Course VARCHAR(50),
+RoomID INT);
+
+SELECT * FROM Student WHERE RoomID=2;
+SELECT COUNT(*) FROM Student;
+</pre>
+<button onclick="copyCode('c3')">Copy Code</button>
+</div>
+
+<div class="card">
+<h2>Movie Booking System</h2>
+<pre id="c4">
+CREATE DATABASE MovieDB;
+USE MovieDB;
+
+CREATE TABLE Booking(
+BookingID INT PRIMARY KEY,
+MovieID INT,
+CustomerID INT,
+TotalAmount INT);
+
+SELECT * FROM Booking WHERE TotalAmount>1000;
+SELECT MAX(TotalAmount) FROM Booking;
+</pre>
+<button onclick="copyCode('c4')">Copy Code</button>
+</div>
+
+<div class="card">
+<h2>Library Management</h2>
+<pre id="c5">
+CREATE DATABASE LibraryDB;
+USE LibraryDB;
+
+CREATE TABLE Book(
+BookID INT PRIMARY KEY,
+Title VARCHAR(50),
+Price INT);
+
+SELECT * FROM Book ORDER BY Price;
+SELECT AVG(Price) FROM Book;
+</pre>
+<button onclick="copyCode('c5')">Copy Code</button>
+</div>
+
+<div class="card">
+<h2>Hospital Management</h2>
+<pre id="c6">
+CREATE DATABASE HospitalDB;
+USE HospitalDB;
+
+CREATE TABLE Patient(
+PatientID INT PRIMARY KEY,
+PatientName VARCHAR(50),
+Age INT,
+Disease VARCHAR(50));
+
+SELECT * FROM Patient WHERE Age>40;
+SELECT COUNT(*) FROM Patient;
+</pre>
+<button onclick="copyCode('c6')">Copy Code</button>
+</div>
+
+<div class="card">
+<h2>Online Retail Store</h2>
+<pre id="c7">
+CREATE DATABASE RetailDB;
+USE RetailDB;
+
+CREATE TABLE Product(
+ProductID INT PRIMARY KEY,
+ProductName VARCHAR(50),
+Price INT);
+
+SELECT AVG(Price) FROM Product;
+SELECT COUNT(*) FROM Product;
+</pre>
+<button onclick="copyCode('c7')">Copy Code</button>
+</div>
+
+<div class="card">
+<h2>Food Delivery System</h2>
+<pre id="c8">
+CREATE DATABASE FoodDB;
+USE FoodDB;
+
+CREATE TABLE Orders(
+OrderID INT PRIMARY KEY,
+CustomerID INT,
+TotalAmount INT);
+
+SELECT * FROM Orders WHERE TotalAmount>800;
+SELECT MAX(TotalAmount) FROM Orders;
+</pre>
+<button onclick="copyCode('c8')">Copy Code</button>
+</div>
+
+<div class="card">
+<h2>Exam Tricks</h2>
+<pre>
+WHERE = Search
+ORDER BY = Sorting
+COUNT() = Total
+AVG() = Average
+MAX() = Highest
+JOIN = Connect Tables
+DESC = Highest to Lowest
+ASC = A to Z
+</pre>
+</div>
+
+</div>
+
+<script>
+function copyCode(id){
+let text=document.getElementById(id).innerText;
+navigator.clipboard.writeText(text);
+alert("Code Copied");
+}
+
+function searchCards(){
+let input=document.getElementById("searchBox").value.toLowerCase();
+let cards=document.getElementsByClassName("card");
+
+for(let i=0;i<cards.length;i++){
+let text=cards[i].innerText.toLowerCase();
+
+if(text.includes(input)){
+cards[i].style.display="block";
+}else{
+cards[i].style.display="none";
+}
+}
+}
+</script>
+
+</body>
+</html>
